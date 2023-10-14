@@ -7,6 +7,7 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 //use App\Http\Resources\CategoryResource;
 //use App\Http\Resources\ErrorResource;
+use App\Http\Resources\ErrorResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\Category;
 //use http\Env\Response;
@@ -14,6 +15,7 @@ use App\Models\Category;
 //use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use DB;
+use auth;
 
 
 class CategoryController extends Controller
@@ -21,7 +23,6 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-
 
     public function index()
     {
@@ -178,6 +179,4 @@ class CategoryController extends Controller
 //}
 //}
 
-
-//  safsf
 

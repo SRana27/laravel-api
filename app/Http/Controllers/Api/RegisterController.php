@@ -16,31 +16,28 @@ class RegisterController extends Controller
 
     public function register( Request $request)
     {
-      $validator =Validator::make($request->all(),[
-           'name'=>'required|string',
-           'email'=>'required|email|unique:users',
+          $validator =Validator::make($request->all(),
+          [
+            'name'=>'required|string',
+            'email'=>'required|email|unique:users',
            'password'=>'required|min:8',
            'confirm_password'=>'required|same:password',
 
-      ]);
+          ]);
 
-      if($validator->fails())
-      {
-          return (new ErrorResource($validator->getMessageBag()))->response()->setStatusCode(422);
-      }
-       $password =bcrypt($request->password);
-           $user=User::create([
-            'name'=> $request->name,
-            'email'=>$request->email,
-            'password'=>$password,
-
+        if ($validator->fails()) {
+            return (new ErrorResource($validator->getMessageBag()))->response()->setStatusCode(422);
+        }
+        $password = bcrypt($request->password);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password,
         ]);
+        $success['token'] = $user->createToken('RestApi')->plainTextToken;
+        $success['name'] = $user->name;
 
-        $success['token'] =$user->createToken('RestApi')->plainTextToken;
-        $success['name']=$user->name;
-
-        return (new SuccessResource(['message'=>'user registered successfully','data'=>$success]))->response()->setStatusCode(201);
-
+        return (new SuccessResource(['message' => 'user registered successfully', 'data' => $success]))->response()->setStatusCode(201);
 
 
     }
@@ -59,12 +56,14 @@ class RegisterController extends Controller
         if ( Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
             $user = Auth::user();
+
             $success['token'] = $user->createToken('RestApi')->plainTextToken;
             $success['name'] = $user->name;
             return (new SuccessResource(['message' => 'user login successfully', 'data' => $success]))->response()->setStatusCode(200);
         } else
             {
-              return (new ErrorResource(['message'=>'unauthorized']))->response()->setStatusCode(422);
+                $errors[]=__('auth.failed');
+              return (new ErrorResource(['message'=>'unauthorized' ,'error_type'=>$errors]))->response()->setStatusCode(422);
            }
 
     }
