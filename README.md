@@ -1,2 +1,2 @@
 simple laravel api 
-user authentication and categouries crud
+user authentication and categories crud
