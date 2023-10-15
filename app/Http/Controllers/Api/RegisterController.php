@@ -62,8 +62,8 @@ class RegisterController extends Controller
             return (new SuccessResource(['message' => 'user login successfully', 'data' => $success]))->response()->setStatusCode(200);
         } else
             {
-                $errors[]=__('auth.failed');
-              return (new ErrorResource(['message'=>'unauthorized' ,'error_type'=>$errors]))->response()->setStatusCode(422);
+//                $errors[]=__('auth.failed');
+              return (new ErrorResource(['message'=>'unauthorized email or password invalid' ,]))->response()->setStatusCode(422);
            }
 
     }
@@ -71,7 +71,7 @@ class RegisterController extends Controller
     public function logout()
     {
        auth()->user()->tokens()->delete();
-        return (new ErrorResource(['message'=>'logout successfully']))->response()->setStatusCode(200);
+        return (new SuccessResource(['message'=>'logout successfully']))->response()->setStatusCode(200);
     }
 }
 

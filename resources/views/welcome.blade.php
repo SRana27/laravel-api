@@ -11,10 +11,6 @@
     <title>Api</title>
 </head>
 <body>
-{{--     <h1 class="text-center pt-5 ">laravel api devolopment</h1>--}}
-{{--     <a class="btn btn-success" href="http://localhost/laravel-api/public/api/categories">data</a>--}}
-{{--     <a class="btn btn-success" href="http://localhost/laravel-api/public/api/categories/1">data1</a>--}}
-
-
+     <h1 class="text-center pt-5 ">laravel api devolopment</h1>
 </body>
 </html>

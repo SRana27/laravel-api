@@ -31,3 +31,4 @@ Route::post('login',[RegisterController::class,'login']);
        Route::get('logout',[RegisterController::class,'logout']);
        Route::apiresource('categories',CategoryController::class);
 });
+
