@@ -86,7 +86,7 @@ class CategoryController extends Controller
 
 
 
-               /** Row Code with out api resource */
+               /** Row Code with out apiresource */
 //
 //        public function index()
 //    {
