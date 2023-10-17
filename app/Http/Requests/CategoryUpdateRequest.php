@@ -24,7 +24,11 @@ class CategoryUpdateRequest extends FormRequest
         }
     protected function failedValidation(Validator $validator)
     {
+<<<<<<< HEAD
         $response= (new ErrorResource($validator->getMessageBag()))->response()->setStatusCode(422);
+=======
+        $response= (new ErrorResource($validator->errors()))->response()->setStatusCode(422);
+>>>>>>> 66a1a1c318e5be4068f2f7211baa4296f9198c83
         throw new ValidationException($validator,$response);
 
 

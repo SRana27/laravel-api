@@ -15,7 +15,6 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use DB;
 
-
 class CategoryController extends Controller
 {
     /**
@@ -25,7 +24,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::latest()->get();
+
 
         return (new SuccessResource(['message' => 'All Category', 'data' => $categories]))->response()->setStatusCode(200);
     }
@@ -74,7 +74,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-
         $category->delete();
         return (new SuccessResource(['message' => 'successfully category deleted']))->response()->setStatusCode(200);
 
@@ -87,6 +86,7 @@ class CategoryController extends Controller
 
 
                /** Row Code with out apiresource */
+
 //
 //        public function index()
 //    {
@@ -177,7 +177,5 @@ class CategoryController extends Controller
 //
 //}
 //}
-
-
 
 

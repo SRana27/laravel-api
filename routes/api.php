@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
+use  App\Http\Controllers\Api\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,5 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::get('categories',[CategoryController::class,'index']);
 //Route::post('categories/store',[CategoryController::class,'store']);
 
-Route::apiresource('categories',CategoryController::class);
-   
+
+Route::post('register',[RegisterController::class,'register']);
+Route::post('login',[RegisterController::class,'login']);
+
+
+  Route::middleware(['auth:sanctum'])->group(function (){
+       Route::get('logout',[RegisterController::class,'logout']);
+       Route::apiresource('categories',CategoryController::class);
+});
+
