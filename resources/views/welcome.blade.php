@@ -12,10 +12,8 @@
 </head>
 <body>
      <h1 class="text-center pt-5 ">laravel api devolopment</h1>
-<<<<<<< HEAD
-     <a class="btn btn-success" href="http://localhost/laravel-api/public/api/categories">data</a>
-     <a class="btn btn-success" href="http://localhost/laravel-api/public/api/categories/1">data1</a>
-=======
->>>>>>> 66a1a1c318e5be4068f2f7211baa4296f9198c83
+     <a class="btn btn-success" href="http://localhost/my-commerce/public/api/products">data</a>
+
+
 </body>
 </html>
